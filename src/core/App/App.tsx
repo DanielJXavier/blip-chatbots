@@ -1,5 +1,11 @@
 import React, { FC } from 'react';
 
-const App: FC = () => <></>;
+import Header from 'core/Header';
+
+const App: FC = () => (
+  <main>
+    <Header />
+  </main>
+);
 
 export default App;
