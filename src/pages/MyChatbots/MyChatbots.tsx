@@ -8,6 +8,7 @@ import organizeBlocks from 'assets/images/organize-blocks.png';
 import organizeList from 'assets/images/organize-list.png';
 import star from 'assets/images/star.png';
 import favorite from 'assets/images/favorite.png';
+import add from 'assets/images/add.png';
 
 import styles from './MyChatbots.module.scss';
 
@@ -103,6 +104,9 @@ const MyChatbots: FC = () => {
           <button onClick={() => setSearch('')}>Clean search</button>
         </div>
       }
+      <button className={styles.add}>
+        <img src={add} alt="Add" />
+      </button>
     </section>
   );
 };

@@ -198,4 +198,18 @@
       cursor: pointer;
     }
   }
+
+  .add {
+    position: fixed;
+    right: 30px;
+    bottom: 15px;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background-color: #2cc3d5;
+    box-shadow: 0 5px 10px 0 #e7ecf0;
+    cursor: not-allowed;
+    z-index: 20;
+  }
 }
