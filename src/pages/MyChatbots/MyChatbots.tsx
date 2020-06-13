@@ -104,7 +104,7 @@ const MyChatbots: FC = () => {
           <button onClick={() => setSearch('')}>Clean search</button>
         </div>
       }
-      <button className={styles.add}>
+      <button className={styles.add} disabled={true}>
         <img src={add} alt="Add" />
       </button>
     </section>
