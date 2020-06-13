@@ -42,49 +42,49 @@ const MyChatbots: FC = () => {
   const visibleChatbots = chatbots.filter(filterBySearch);
 
   return (
-  <section className={styles.myChatbots}>
-    <div className={styles.menu}>
-      <h2 className={styles.title}>My chatbots</h2>
-      <div className={styles.actions}>
+    <section className={styles.myChatbots}>
+      <div className={styles.menu}>
+        <h2 className={styles.title}>My chatbots</h2>
+        <div className={styles.actions}>
           <div className={styles.search}>
             <input type="text" placeholder="Search" value={search} onChange={({ target: { value }}) => setSearch(value)} />
             {search.length > 0 && <button onClick={() => setSearch('')}>x</button>}
           </div>
           <button className={styles.orderBy} onClick={() => setOrder('name')}>Order by name</button>
           <button className={styles.orderBy} onClick={() => setOrder('created')}>Order by creation</button>
-        <button className={styles.showMode}>
-          <img src={organizeBlocks} alt="Show blocks" />
-        </button>
-        <button className={styles.showMode}>
-          <img src={organizeList} alt="Show list" />
-        </button>
+          <button className={styles.showMode}>
+            <img src={organizeBlocks} alt="Show blocks" />
+          </button>
+          <button className={styles.showMode}>
+            <img src={organizeList} alt="Show list" />
+          </button>
+        </div>
       </div>
-    </div>
       {visibleFavorites.length > 0 &&
-    <div className={styles.favorites}>
-      <h3 className={styles.title}>Favorites</h3>
-      <div className={styles.items}>
+        <div className={styles.favorites}>
+          <h3 className={styles.title}>Favorites</h3>
+          <div className={styles.items}>
             {visibleFavorites.sort(sortByKey).map(({ shortName, image, name, template }, i) => (
               <div key={i} className={styles.item}>
                 <button className={styles.star} onClick={() => handleRemoveFavorite(shortName)}>
                   <img src={star} alt="Remove from favorites" />
-          </button>
+                </button>
                 <img className={styles.image} src={image} alt={name} />
                 <p className={styles.name}>{name}</p>
                 <p className={styles.template}>{template}</p>
-        </div>
+              </div>
             ))}
-      </div>
+          </div>
           {visibleChatbots.length > 0 && <hr className={styles.separator} />}
-    </div>
+        </div>
       }
       {visibleChatbots.length > 0 &&
-    <div className={styles.items}>
+        <div className={styles.items}>
           {visibleChatbots.sort(sortByKey).map(({ shortName, image, name, template }, i) => (
             <div key={i} className={styles.item}>
               <button className={styles.star} onClick={() => handleAddFavorite(shortName)}>
                 <img src={favorite} alt="Add to favorites" />
-          </button>
+              </button>
               <img className={styles.image} src={image} alt={name} />
               <p className={styles.name}>{name}</p>
               <p className={styles.template}>{template}</p>
@@ -92,9 +92,14 @@ const MyChatbots: FC = () => {
           ))}
         </div>
       }
-      </div>
-  </section>
-);
+      {!visibleFavorites.length && !visibleChatbots.length &&
+        <div className={styles.noContent}>
+          <p>Sorry! We can&apos;t find chatbots by the &quot;{search}&quot; search</p>
+          <button onClick={() => setSearch('')}>Clean search</button>
+        </div>
+      }
+    </section>
+  );
 };
 
 export default MyChatbots;
