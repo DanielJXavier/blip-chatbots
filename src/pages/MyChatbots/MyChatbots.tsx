@@ -12,13 +12,18 @@ import favorite from 'assets/images/favorite.png';
 import styles from './MyChatbots.module.scss';
 
 type OrderType = 'name' | 'created';
+type ShowModeType = 'cards' | 'list';
+
 const MyChatbots: FC = () => {
   const myChatbots = useContext(MyChatbotsContext);
 
   const [favorites, setFavorites] = useState<MyChatbotsType>([]);
   const [chatbots, setChatbots] = useState<MyChatbotsType>(myChatbots);
 
+  const [search, setSearch] = useState<string>('');
   const [order, setOrder] = useState<OrderType>('name');
+
+  const [showMode, setShowMode] = useState<ShowModeType>('cards');
 
   const handleAddFavorite = (shortNameToAdd: string) => {
     setFavorites((current) => [...current, myChatbots.find(({ shortName }) => shortName === shortNameToAdd)!]);
@@ -43,7 +48,7 @@ const MyChatbots: FC = () => {
 
   return (
     <section className={styles.myChatbots}>
-      <div className={styles.menu}>
+      <div className={`${styles.menu} ${styles[showMode]}`}>
         <h2 className={styles.title}>My chatbots</h2>
         <div className={styles.actions}>
           <div className={styles.search}>
@@ -52,26 +57,26 @@ const MyChatbots: FC = () => {
           </div>
           <button className={styles.orderBy} onClick={() => setOrder('name')}>Order by name</button>
           <button className={styles.orderBy} onClick={() => setOrder('created')}>Order by creation</button>
-          <button className={styles.showMode}>
-            <img src={organizeBlocks} alt="Show blocks" />
+          <button className={styles.showMode} onClick={() => setShowMode('cards')}>
+            <img src={organizeBlocks} alt="Show cards" />
           </button>
-          <button className={styles.showMode}>
+          <button className={styles.showMode} onClick={() => setShowMode('list')}>
             <img src={organizeList} alt="Show list" />
           </button>
         </div>
       </div>
       {visibleFavorites.length > 0 &&
-        <div className={styles.favorites}>
+        <div className={`${styles.favorites} ${styles[showMode]}`}>
           <h3 className={styles.title}>Favorites</h3>
-          <div className={styles.items}>
-            {visibleFavorites.sort(sortByKey).map(({ shortName, image, name, template }, i) => (
+          <div className={`${styles.items} ${styles[showMode]}`}>
+            {visibleFavorites.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
               <div key={i} className={styles.item}>
                 <button className={styles.star} onClick={() => handleRemoveFavorite(shortName)}>
                   <img src={star} alt="Remove from favorites" />
                 </button>
                 <img className={styles.image} src={image} alt={name} />
                 <p className={styles.name}>{name}</p>
-                <p className={styles.template}>{template}</p>
+                <p className={styles.info}>{showMode === 'cards' ? template : `Created at ${created.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2}).*$/, '$3/$2/$1')}`}</p>
               </div>
             ))}
           </div>
@@ -79,15 +84,15 @@ const MyChatbots: FC = () => {
         </div>
       }
       {visibleChatbots.length > 0 &&
-        <div className={styles.items}>
-          {visibleChatbots.sort(sortByKey).map(({ shortName, image, name, template }, i) => (
+        <div className={`${styles.items} ${styles[showMode]}`}>
+          {visibleChatbots.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
             <div key={i} className={styles.item}>
               <button className={styles.star} onClick={() => handleAddFavorite(shortName)}>
                 <img src={favorite} alt="Add to favorites" />
               </button>
               <img className={styles.image} src={image} alt={name} />
               <p className={styles.name}>{name}</p>
-              <p className={styles.template}>{template}</p>
+              <p className={styles.info}>{showMode === 'cards' ? template : `Created at ${created.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2}).*$/, '$3/$2/$1')}`}</p>
             </div>
           ))}
         </div>
