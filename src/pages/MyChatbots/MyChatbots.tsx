@@ -75,6 +75,7 @@ const MyChatbots: FC = () => {
         </div>
             ))}
       </div>
+          {visibleChatbots.length > 0 && <hr className={styles.separator} />}
     </div>
       }
       {visibleChatbots.length > 0 &&

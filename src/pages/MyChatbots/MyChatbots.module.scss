@@ -78,13 +78,14 @@
       color: #627d9a;
     }
 
-    &::after {
-      content: "";
+    .separator {
       position: absolute;
       bottom: -41px;
       width: 100%;
-      height: 2px;
-      background-color: #dee8ed;
+      border: none;
+      border-bottom-style: solid;
+      border-bottom-width: 2px;
+      border-bottom-color: #dee8ed;
     }
   }
 
