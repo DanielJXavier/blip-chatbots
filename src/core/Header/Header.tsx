@@ -8,7 +8,7 @@ import styles from './Header.module.scss';
 
 const Header: FC = () => (
   <header className={styles.header}>
-    <Link className={styles.link} to="/my-chatbots">
+    <Link to="/my-chatbots">
       <img src={logo} alt="BLiP" />
     </Link>
   </header>
