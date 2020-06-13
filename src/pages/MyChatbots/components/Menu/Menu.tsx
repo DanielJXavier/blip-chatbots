@@ -1,21 +1,13 @@
-import React, { FC, Dispatch as DispatchType, SetStateAction as SetStateActionType } from 'react';
+import React, { FC } from 'react';
 
-import { OrderType, ShowModeType } from 'pages/MyChatbots/MyChatbots.types';
+import { PropsType } from './Menu.types';
 
 import organizeBlocks from 'assets/images/organize-blocks.png';
 import organizeList from 'assets/images/organize-list.png';
 
 import styles from './Menu.module.scss';
 
-type Props = {
-  showMode: ShowModeType;
-  search: string;
-  setSearch: DispatchType<SetStateActionType<string>>;
-  setOrder: DispatchType<SetStateActionType<OrderType>>;
-  setShowMode: DispatchType<SetStateActionType<ShowModeType>>;
-}
-
-const Menu: FC<Props> = ({ showMode, search, setSearch, setOrder, setShowMode }) => (
+const Menu: FC<PropsType> = ({ showMode, search, setSearch, setOrder, setShowMode }) => (
   <div className={`${styles.menu} ${styles[showMode]}`}>
     <h2 className={styles.title}>My chatbots</h2>
     <div className={styles.actions}>
