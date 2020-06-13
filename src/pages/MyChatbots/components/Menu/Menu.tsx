@@ -1,6 +1,6 @@
 import React, { FC, Dispatch as DispatchType, SetStateAction as SetStateActionType } from 'react';
 
-import { OrderType, ShowModeType } from '../MyChatbots.types';
+import { OrderType, ShowModeType } from 'pages/MyChatbots/MyChatbots.types';
 
 import organizeBlocks from 'assets/images/organize-blocks.png';
 import organizeList from 'assets/images/organize-list.png';
