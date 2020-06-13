@@ -5,11 +5,11 @@ import { MyChatbotsContext } from 'contexts/myChatbots';
 import { MyChatbotType, MyChatbotsType } from 'data/myChatbots.types';
 import { OrderType, ShowModeType } from './MyChatbots.types';
 
-import organizeBlocks from 'assets/images/organize-blocks.png';
-import organizeList from 'assets/images/organize-list.png';
 import star from 'assets/images/star.png';
 import favorite from 'assets/images/favorite.png';
 import add from 'assets/images/add.png';
+
+import Menu from './components/Menu';
 
 import styles from './MyChatbots.module.scss';
 
@@ -47,23 +47,7 @@ const MyChatbots: FC = () => {
 
   return (
     <section className={styles.myChatbots}>
-      <div className={`${styles.menu} ${styles[showMode]}`}>
-        <h2 className={styles.title}>My chatbots</h2>
-        <div className={styles.actions}>
-          <div className={styles.search}>
-            <input type="text" placeholder="Search" value={search} onChange={({ target: { value }}) => setSearch(value)} />
-            {search.length > 0 && <button onClick={() => setSearch('')}>x</button>}
-          </div>
-          <button className={styles.orderBy} onClick={() => setOrder('name')}>Order by name</button>
-          <button className={styles.orderBy} onClick={() => setOrder('created')}>Order by creation</button>
-          <button className={styles.showMode} onClick={() => setShowMode('cards')}>
-            <img src={organizeBlocks} alt="Show cards" />
-          </button>
-          <button className={styles.showMode} onClick={() => setShowMode('list')}>
-            <img src={organizeList} alt="Show list" />
-          </button>
-        </div>
-      </div>
+      <Menu showMode={showMode} search={search} setSearch={setSearch} setOrder={setOrder} setShowMode={setShowMode} />
       {visibleFavorites.length > 0 &&
         <div className={`${styles.favorites} ${styles[showMode]}`}>
           <h3 className={styles.title}>Favorites</h3>
