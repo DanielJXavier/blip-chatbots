@@ -19,6 +19,21 @@ const MyChatbots: FC = () => {
   // Favorites
   const [favorites, setFavorites] = useState<MyChatbotsType>([]);
   
+  useEffect(() => {
+    const persistedFavorites = localStorage.getItem('favorites');
+
+    persistedFavorites && (() => {
+      const favoritesArray: MyChatbotsType = JSON.parse(persistedFavorites);
+
+      setFavorites(favoritesArray);
+      setChatbots((current) => current.filter(({ shortName }) => !favoritesArray.map(({ shortName }) => shortName).includes(shortName)));
+    })();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+  
   const handleAddFavorite = (shortNameToAdd: string) => {
     setFavorites((current) => [...current, myChatbots.find(({ shortName }) => shortName === shortNameToAdd)!]);
     setChatbots((current) => current.filter(({ shortName }) => shortName !== shortNameToAdd));
