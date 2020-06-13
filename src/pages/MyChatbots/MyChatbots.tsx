@@ -6,6 +6,7 @@ import { MyChatbotType, MyChatbotsType } from 'data/myChatbots.types';
 
 import add from 'assets/images/add.png';
 
+import Separator from 'components/Separator';
 import Menu from './components/Menu';
 import Item from './components/Item';
 
@@ -66,7 +67,7 @@ const MyChatbots: FC = () => {
               <Item key={i} image={image} name={name} template={template} created={created} isFavorite={true} isList={isList} handleFavoriteClick={() => handleRemoveFavorite(shortName)} />
             ))}
           </div>
-          {visibleChatbots.length > 0 && <hr className={styles.separator} />}
+          {visibleChatbots.length > 0 && <Separator />}
         </div>
       }
       {visibleChatbots.length > 0 &&
