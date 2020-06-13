@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext } from 'react';
+import React, { FC, useState, useContext, useEffect } from 'react';
 
 import { MyChatbotsContext } from 'contexts/myChatbots';
 
@@ -18,7 +18,7 @@ const MyChatbots: FC = () => {
 
   // Favorites
   const [favorites, setFavorites] = useState<MyChatbotsType>([]);
-  
+
   useEffect(() => {
     const persistedFavorites = localStorage.getItem('favorites');
 
@@ -79,7 +79,7 @@ const MyChatbots: FC = () => {
           <h3 className={styles.title}>Favorites</h3>
           <div className={classNameItems}>
             {visibleFavorites.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
-              <Item key={i} image={image} name={name} template={template} created={created} isFavorite={true} isList={isList} handleFavoriteClick={() => handleRemoveFavorite(shortName)} />
+              <Item key={i} shortName={shortName} image={image} name={name} template={template} created={created} isFavorite={true} isList={isList} handleFavoriteClick={() => handleRemoveFavorite(shortName)} />
             ))}
           </div>
           {visibleChatbots.length > 0 && <Separator />}
@@ -88,7 +88,7 @@ const MyChatbots: FC = () => {
       {visibleChatbots.length > 0 &&
         <div className={classNameItems}>
           {visibleChatbots.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
-            <Item key={i} image={image} name={name} template={template} created={created} isFavorite={false} isList={isList} handleFavoriteClick={() => handleAddFavorite(shortName)} />
+            <Item key={i} shortName={shortName} image={image} name={name} template={template} created={created} isFavorite={false} isList={isList} handleFavoriteClick={() => handleAddFavorite(shortName)} />
           ))}
         </div>
       }
