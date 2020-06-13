@@ -2,7 +2,7 @@ import React, { FC, useState, useContext } from 'react';
 
 import { MyChatbotsContext } from 'contexts/myChatbots';
 
-import { MyChatbotType, MyChatbotsType } from 'data/myChatbots';
+import { MyChatbotType, MyChatbotsType } from 'data/myChatbots.types';
 
 import organizeBlocks from 'assets/images/organize-blocks.png';
 import organizeList from 'assets/images/organize-list.png';
