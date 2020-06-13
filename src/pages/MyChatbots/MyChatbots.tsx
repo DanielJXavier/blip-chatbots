@@ -12,9 +12,10 @@ const MyChatbots: FC = () => (
     <div className={styles.menu}>
       <h2 className={styles.title}>My chatbots</h2>
       <div className={styles.actions}>
-        <input className={styles.search} type="text" placeholder="Search" />
-        <button className={styles.orderBy}>Order by name</button>
-        <button className={styles.orderBy}>Order by creation</button>
+          <div className={styles.search}>
+            <input type="text" placeholder="Search" value={search} onChange={({ target: { value }}) => setSearch(value)} />
+            {search.length > 0 && <button onClick={() => setSearch('')}>x</button>}
+          </div>
         <button className={styles.showMode}>
           <img src={organizeBlocks} alt="Show blocks" />
         </button>

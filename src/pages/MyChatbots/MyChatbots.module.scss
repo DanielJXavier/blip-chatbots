@@ -20,8 +20,12 @@
       align-items: center;
 
       .search {
+        position: relative;
         width: 300px;
-        padding: 12px;
+
+        > input {
+          width: 100%;
+          padding: 12px 30px 12px 12px;
         color: #758da4;
         background-color: #fff;
         border: solid 1px #d4e1e7;
@@ -29,6 +33,20 @@
 
         &::placeholder {
           color: #758da4;
+        }
+      }
+
+        > button {
+          position: absolute;
+          top: 1px;
+          right: 1px;
+          padding: 12px;
+          border: none;
+          border-radius: 0 6px 6px 0;
+          font-weight: 600;
+          color: #758da4;
+          background-color: #fff;
+          cursor: pointer;
         }
       }
 
