@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { PropsType } from './Item.types';
 
+import formatDateString from 'utils/formatDateString';
+
 import star from 'assets/images/star.png';
 import favorite from 'assets/images/favorite.png';
 
@@ -15,7 +17,7 @@ const MyChatbots: FC<PropsType> = ({ shortName, image, name, template, created, 
   const favoriteSrc = isFavorite ? star : favorite;
   const favoriteAlt = isFavorite ? 'Remove from favorites' : 'Add to favorites';
 
-  const info = isList ? `Created at ${created.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2}).*$/, '$3/$2/$1')}` : template;
+  const info = isList ? `Created at ${formatDateString(created)}` : template;
 
   return (
     <div className={className}>
