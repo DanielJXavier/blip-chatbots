@@ -11,14 +11,14 @@ import favorite from 'assets/images/favorite.png';
 
 import styles from './MyChatbots.module.scss';
 
+type OrderType = 'name' | 'created';
 const MyChatbots: FC = () => {
   const myChatbots = useContext(MyChatbotsContext);
 
   const [favorites, setFavorites] = useState<MyChatbotsType>([]);
   const [chatbots, setChatbots] = useState<MyChatbotsType>(myChatbots);
 
-  const [search, setSearch] = useState('');
-  const [order, setOrder] = useState('');
+  const [order, setOrder] = useState<OrderType>('name');
 
   const handleAddFavorite = (shortNameToAdd: string) => {
     setFavorites((current) => [...current, myChatbots.find(({ shortName }) => shortName === shortNameToAdd)!]);
