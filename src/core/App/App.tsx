@@ -9,6 +9,7 @@ import myChatbots from 'data/myChatbots';
 import Header from 'core/Header';
 
 import MyChatbots from 'pages/MyChatbots';
+import ChatbotDetails from 'pages/ChatbotDetails';
 
 const App: FC = () => (
   <MyChatbotsContext.Provider value={myChatbots}>
@@ -16,6 +17,9 @@ const App: FC = () => (
       <Router>
         <Header />
         <Switch>
+          <Route path="/my-chatbots/:shortName">
+            <ChatbotDetails />
+          </Route>
           <Route path="/my-chatbots">
             <MyChatbots />
           </Route>
