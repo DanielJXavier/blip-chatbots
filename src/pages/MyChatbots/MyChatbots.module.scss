@@ -37,29 +37,6 @@
     &.list {
       grid-template-columns: 1fr;
       row-gap: 15px;
-
-      .item {
-        margin: 0 0 0 45px;
-        padding: 16px 24px;
-        grid-template-columns: auto 1fr auto;
-        column-gap: 10px;
-        justify-items: start;
-
-        .star {
-          top: auto;
-          left: -41px;
-        }
-
-        .image {
-          width: 28px;
-          height: 28px;
-          margin: 0;
-        }
-
-        .info {
-          text-transform: none;
-        }
-      }
     }
 
     .item {

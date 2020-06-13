@@ -5,11 +5,10 @@ import { MyChatbotsContext } from 'contexts/myChatbots';
 import { MyChatbotType, MyChatbotsType } from 'data/myChatbots.types';
 import { OrderType, ShowModeType } from './MyChatbots.types';
 
-import star from 'assets/images/star.png';
-import favorite from 'assets/images/favorite.png';
 import add from 'assets/images/add.png';
 
 import Menu from './components/Menu';
+import Item from './components/Item';
 
 import styles from './MyChatbots.module.scss';
 
@@ -53,14 +52,7 @@ const MyChatbots: FC = () => {
           <h3 className={styles.title}>Favorites</h3>
           <div className={`${styles.items} ${styles[showMode]}`}>
             {visibleFavorites.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
-              <div key={i} className={styles.item}>
-                <button className={styles.star} onClick={() => handleRemoveFavorite(shortName)}>
-                  <img src={star} alt="Remove from favorites" />
-                </button>
-                <img className={styles.image} src={image} alt={name} />
-                <p className={styles.name}>{name}</p>
-                <p className={styles.info}>{showMode === 'cards' ? template : `Created at ${created.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2}).*$/, '$3/$2/$1')}`}</p>
-              </div>
+              <Item key={i} image={image} name={name} template={template} created={created} isFavorite={true} isList={showMode === 'list'} handleFavoriteClick={() => handleRemoveFavorite(shortName)} />
             ))}
           </div>
           {visibleChatbots.length > 0 && <hr className={styles.separator} />}
@@ -69,14 +61,7 @@ const MyChatbots: FC = () => {
       {visibleChatbots.length > 0 &&
         <div className={`${styles.items} ${styles[showMode]}`}>
           {visibleChatbots.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
-            <div key={i} className={styles.item}>
-              <button className={styles.star} onClick={() => handleAddFavorite(shortName)}>
-                <img src={favorite} alt="Add to favorites" />
-              </button>
-              <img className={styles.image} src={image} alt={name} />
-              <p className={styles.name}>{name}</p>
-              <p className={styles.info}>{showMode === 'cards' ? template : `Created at ${created.replace(/^([0-9]{4})-([0-9]{2})-([0-9]{2}).*$/, '$3/$2/$1')}`}</p>
-            </div>
+            <Item key={i} image={image} name={name} template={template} created={created} isFavorite={false} isList={showMode === 'list'} handleFavoriteClick={() => handleAddFavorite(shortName)} />
           ))}
         </div>
       }
