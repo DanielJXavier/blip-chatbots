@@ -1,3 +1,7 @@
+import React, { FC, useState, useContext } from 'react';
+
+import { MyChatbotsContext } from 'contexts/myChatbots';
+
 import React, { FC } from 'react';
 
 import organizeBlocks from 'assets/images/organize-blocks.png';
@@ -6,6 +10,9 @@ import star from 'assets/images/star.png';
 import favorite from 'assets/images/favorite.png';
 
 import styles from './MyChatbots.module.scss';
+
+const MyChatbots: FC = () => {
+  const myChatbots = useContext(MyChatbotsContext);
 
 const MyChatbots: FC = () => (
   <section className={styles.myChatbots}>
@@ -49,5 +56,6 @@ const MyChatbots: FC = () => (
       </div>
   </section>
 );
+};
 
 export default MyChatbots;
