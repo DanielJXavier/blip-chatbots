@@ -32,7 +32,7 @@ const ChatbotDetails: FC = () => {
           <img src={blip} alt={name} />
         </div>
         <div className={styles.nameId}>
-          <h2>Botname</h2>
+          <h2>{name}</h2>
           <p>Id: {shortName}</p>
         </div>
         <div className={styles.created}>
