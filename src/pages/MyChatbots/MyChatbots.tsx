@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext } from 'react';
+import React, { FC, useState, useContext, useEffect } from 'react';
 
 import { MyChatbotsContext } from 'contexts/myChatbots';
 
@@ -6,6 +6,7 @@ import { MyChatbotType, MyChatbotsType } from 'data/myChatbots.types';
 
 import add from 'assets/images/add.png';
 
+import Separator from 'components/Separator';
 import Menu from './components/Menu';
 import Item from './components/Item';
 
@@ -17,6 +18,21 @@ const MyChatbots: FC = () => {
 
   // Favorites
   const [favorites, setFavorites] = useState<MyChatbotsType>([]);
+
+  useEffect(() => {
+    const persistedFavorites = localStorage.getItem('favorites');
+
+    persistedFavorites && (() => {
+      const favoritesArray: MyChatbotsType = JSON.parse(persistedFavorites);
+
+      setFavorites(favoritesArray);
+      setChatbots((current) => current.filter(({ shortName }) => !favoritesArray.map(({ shortName }) => shortName).includes(shortName)));
+    })();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
   
   const handleAddFavorite = (shortNameToAdd: string) => {
     setFavorites((current) => [...current, myChatbots.find(({ shortName }) => shortName === shortNameToAdd)!]);
@@ -63,16 +79,16 @@ const MyChatbots: FC = () => {
           <h3 className={styles.title}>Favorites</h3>
           <div className={classNameItems}>
             {visibleFavorites.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
-              <Item key={i} image={image} name={name} template={template} created={created} isFavorite={true} isList={isList} handleFavoriteClick={() => handleRemoveFavorite(shortName)} />
+              <Item key={i} shortName={shortName} image={image} name={name} template={template} created={created} isFavorite={true} isList={isList} handleFavoriteClick={() => handleRemoveFavorite(shortName)} />
             ))}
           </div>
-          {visibleChatbots.length > 0 && <hr className={styles.separator} />}
+          {visibleChatbots.length > 0 && <Separator />}
         </div>
       }
       {visibleChatbots.length > 0 &&
         <div className={classNameItems}>
           {visibleChatbots.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
-            <Item key={i} image={image} name={name} template={template} created={created} isFavorite={false} isList={isList} handleFavoriteClick={() => handleAddFavorite(shortName)} />
+            <Item key={i} shortName={shortName} image={image} name={name} template={template} created={created} isFavorite={false} isList={isList} handleFavoriteClick={() => handleAddFavorite(shortName)} />
           ))}
         </div>
       }

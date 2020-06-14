@@ -1,5 +1,5 @@
 .myChatbots {
-  padding: 32px 60px;
+  padding: 30px 60px;
 
   .favorites {
     position: relative;
@@ -7,25 +7,20 @@
 
     &.list {
       .title {
-        margin: 0 0 64px;
+        margin: 0 0 70px;
       }
     }
 
     .title {
-      margin: 0 0 14px;
+      margin: 0 0 20px;
       font-size: 32px;
       font-weight: 700;
       color: #627d9a;
     }
 
-    .separator {
+    > hr {
       position: absolute;
       bottom: -41px;
-      width: 100%;
-      border: none;
-      border-bottom-style: solid;
-      border-bottom-width: 2px;
-      border-bottom-color: #dee8ed;
     }
   }
 
@@ -37,48 +32,6 @@
     &.list {
       grid-template-columns: 1fr;
       row-gap: 15px;
-    }
-
-    .item {
-      position: relative;
-      padding: 36px 0 42px;
-      display: grid;
-      align-items: center;
-      justify-items: center;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px 0 #e7ecf0;
-
-      .star {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        padding: 0;
-        border: none;
-        cursor: pointer;
-      }
-
-      .image {
-        width: 58px;
-        height: 58px;
-        margin: 0 0 18px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: top;
-      }
-
-      .name {
-        font-size: 16px;
-        font-weight: 700;
-        color: #142b37;
-        text-transform: capitalize;
-      }
-
-      .info {
-        font-size: 12px;
-        color: #84909f;
-        text-transform: capitalize;
-      }
     }
   }
 

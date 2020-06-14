@@ -1,5 +1,5 @@
 export type PropsType = {
-  key: number;
+  shortName: string;
   image: string;
   name: string;
   template: string;
