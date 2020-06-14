@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { MyChatbotsContext } from 'contexts/myChatbots';
 
 import formatDateString from 'utils/formatDateString';
+import formatNumber from 'utils/formatNumber';
 
 import blip from 'assets/images/blip.png';
 import user from 'assets/images/user.png';
@@ -55,7 +56,7 @@ const ChatbotDetails: FC = () => {
               <img src={user} alt="User" />
             </div>
             <div className={styles.text}>
-              <p className={styles.value}>1.000</p>
+              <p className={styles.value}>{formatNumber(culture, analytics.user.actived)}</p>
               <p className={styles.description}>Active users</p>
             </div>
           </div>
@@ -64,7 +65,7 @@ const ChatbotDetails: FC = () => {
               <img src={union} alt="Received" />
             </div>
             <div className={styles.text}>
-              <p className={styles.value}>1.000</p>
+              <p className={styles.value}>{formatNumber(culture, analytics.message.received)}</p>
               <p className={styles.description}>Received messages</p>
             </div>
           </div>
@@ -73,7 +74,7 @@ const ChatbotDetails: FC = () => {
               <img src={sent} alt="Sent" />
             </div>
             <div className={styles.text}>
-              <p className={styles.value}>1.000</p>
+              <p className={styles.value}>{formatNumber(culture, analytics.message.sent)}</p>
               <p className={styles.description}>Sent messages</p>
             </div>
           </div>
