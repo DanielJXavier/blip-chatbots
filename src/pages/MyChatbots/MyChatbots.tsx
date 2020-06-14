@@ -75,7 +75,7 @@ const MyChatbots: FC = () => {
     <section className={styles.myChatbots}>
       <Menu isList={isList} search={search} setSearch={setSearch} setOrderByName={setOrderByName} setIsList={setIsList} />
       {visibleFavorites.length > 0 &&
-        <div className={classNameFavorites}>
+        <div className={classNameFavorites} data-testid="div-favorites">
           <h3 className={styles.title}>Favorites</h3>
           <div className={classNameItems}>
             {visibleFavorites.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
@@ -86,16 +86,16 @@ const MyChatbots: FC = () => {
         </div>
       }
       {visibleChatbots.length > 0 &&
-        <div className={classNameItems}>
+        <div className={classNameItems} data-testid="div-items">
           {visibleChatbots.sort(sortByKey).map(({ shortName, image, name, template, created }, i) => (
             <Item key={i} shortName={shortName} image={image} name={name} template={template} created={created} isFavorite={false} isList={isList} handleFavoriteClick={() => handleAddFavorite(shortName)} />
           ))}
         </div>
       }
       {!visibleFavorites.length && !visibleChatbots.length &&
-        <div className={styles.noContent}>
+        <div className={styles.noContent} data-testid="div-no-content">
           <p>Sorry! We can&apos;t find chatbots by the &quot;{search}&quot; search</p>
-          <button onClick={() => setSearch('')}>Clean search</button>
+          <button onClick={() => setSearch('')} data-testid="button-clean-search-no-content">Clean search</button>
         </div>
       }
       <button className={styles.add} disabled={true}>
