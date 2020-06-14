@@ -6,6 +6,7 @@ import { MyChatbotsContext } from 'contexts/myChatbots';
 
 import formatDateString from 'utils/formatDateString';
 import formatNumber from 'utils/formatNumber';
+import getCountryAndLanguage from 'utils/getCountryAndLanguage';
 
 import blip from 'assets/images/blip.png';
 import user from 'assets/images/user.png';
@@ -22,7 +23,7 @@ const ChatbotDetails: FC = () => {
 
   const { shortName: shortNameParam } = useParams();
 
-  const { name, shortName, created } = myChatbots.find(({ shortName }) => shortName === shortNameParam)!;
+  const { name, shortName, created, culture, analytics } = myChatbots.find(({ shortName }) => shortName === shortNameParam)!;
 
   return (
     <section className={styles.chatbotDetails}>
@@ -44,10 +45,11 @@ const ChatbotDetails: FC = () => {
           <div className={styles.locale}>
             <div className={styles.field}>
               <p className={styles.label}>Region and idiom</p>
-              <p className={styles.value}>EUA - English (EN)</p>
+              <p className={styles.value}>{getCountryAndLanguage(culture)}</p>
             </div>
             <div className={styles.field}>
               <p className={styles.label}>Timezone</p>
+              {/* Os dados de timezone ficaram "mockados" porque não há informações suficientes para gerá-los no JSON fornecido */}
               <p className={styles.value}>(UTC - 03:00) Brasília</p>
             </div>
           </div>
