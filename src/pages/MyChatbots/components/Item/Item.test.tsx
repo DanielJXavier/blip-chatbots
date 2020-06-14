@@ -38,7 +38,6 @@ describe('Item component', () => {
 
     const { container } = renderComponent(props);
 
-    expect(container).toBeDefined();
     expect(container.firstChild).toHaveClass('list');
   });
 
@@ -48,9 +47,9 @@ describe('Item component', () => {
       isFavorite: true
     };
 
-    const { container } = renderComponent(props);
+    const { getByTestId } = renderComponent(props);
 
-    const img = container.querySelector('.star > img');
+    const img = getByTestId('img-star');
 
     expect(img?.getAttribute('alt')).toBe('Remove from favorites');
     expect(img?.getAttribute('src')).toBe('star.png');

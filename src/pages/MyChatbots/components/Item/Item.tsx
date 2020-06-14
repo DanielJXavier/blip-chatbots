@@ -22,7 +22,7 @@ const MyChatbots: FC<PropsType> = ({ shortName, image, name, template, created, 
   return (
     <div className={className}>
       <button className={styles.star} onClick={handleFavoriteClick}>
-        <img src={favoriteSrc} alt={favoriteAlt} />
+        <img src={favoriteSrc} alt={favoriteAlt} data-testid="img-star" />
       </button>
       <Link className={styles.link} to={`/my-chatbots/${shortName}`}>
         <img className={styles.image} src={image} alt={name} />
