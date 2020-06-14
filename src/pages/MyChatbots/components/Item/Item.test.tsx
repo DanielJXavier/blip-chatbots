@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { render } from '@testing-library/react';
 
@@ -14,12 +14,6 @@ const defaultProps = {
   isList: false,
   handleFavoriteClick: jest.fn()
 };
-
-jest.mock('react-router-dom', () => {
-  const Link: FC = ({ children }) => <a href="#link">{children}</a>;
-
-  return { Link };
-});
 
 const renderComponent = (props = defaultProps) => render(<Item {...props} />);
 
