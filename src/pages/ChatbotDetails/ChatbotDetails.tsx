@@ -7,6 +7,10 @@ import { MyChatbotsContext } from 'contexts/myChatbots';
 import formatDateString from 'utils/formatDateString';
 
 import blip from 'assets/images/blip.png';
+import user from 'assets/images/user.png';
+import union from 'assets/images/union.png';
+import sent from 'assets/images/sent.png';
+import plano from 'assets/images/plano.png';
 
 import Separator from 'components/Separator';
 
@@ -21,7 +25,7 @@ const ChatbotDetails: FC = () => {
 
   return (
     <section className={styles.chatbotDetails}>
-      <div className={styles.chatbotData}>
+      <div className={styles.header}>
         <div className={styles.image}>
           <img src={blip} alt={name} />
         </div>
@@ -33,6 +37,53 @@ const ChatbotDetails: FC = () => {
           <p>Created at {formatDateString(created)}</p>
         </div>
         <Separator />
+      </div>
+      <div className={styles.content}>
+        <div className={styles.chatbotData}>
+          <div className={styles.locale}>
+            <div className={styles.field}>
+              <p className={styles.label}>Region and idiom</p>
+              <p className={styles.value}>EUA - English (EN)</p>
+            </div>
+            <div className={styles.field}>
+              <p className={styles.label}>Timezone</p>
+              <p className={styles.value}>(UTC - 03:00) Brasília</p>
+            </div>
+          </div>
+          <div className={styles.users}>
+            <div className={styles.image}>
+              <img src={user} alt="User" />
+            </div>
+            <div className={styles.text}>
+              <p className={styles.value}>1.000</p>
+              <p className={styles.description}>Active users</p>
+            </div>
+          </div>
+          <div className={styles.receivedMessages}>
+            <div className={styles.image}>
+              <img src={union} alt="Received" />
+            </div>
+            <div className={styles.text}>
+              <p className={styles.value}>1.000</p>
+              <p className={styles.description}>Received messages</p>
+            </div>
+          </div>
+          <div className={styles.sentMessages}>
+            <div className={styles.image}>
+              <img src={sent} alt="Sent" />
+            </div>
+            <div className={styles.text}>
+              <p className={styles.value}>1.000</p>
+              <p className={styles.description}>Sent messages</p>
+            </div>
+          </div>
+        </div>
+        <div className={styles.accountData}>
+          <img className={styles.image} src={plano} alt="Status account" />
+          <p className={styles.label}>Status account</p>
+          <p className={styles.value}>Free</p>
+          <button className={styles.button} disabled={true}>Update account</button>
+        </div>
       </div>
     </section>
   );

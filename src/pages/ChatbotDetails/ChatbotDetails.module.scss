@@ -1,7 +1,7 @@
 .chatbotDetails {
   padding: 32px 60px;
 
-  .chatbotData {
+  .header {
     position: relative;
     padding: 0 0 33px;
     display: grid;
@@ -10,7 +10,11 @@
     align-items: center;
 
     .image {
-      padding: 10px 14px;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: #dee7ec;
       border-radius: 50%;
     }
@@ -37,6 +41,192 @@
     > hr {
       position: absolute;
       bottom: 0;
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 10fr 3fr;
+    column-gap: 40px;
+
+    .chatbotData {
+      display: grid;
+      grid-template-columns: repeat(18, 1fr);
+      gap: 20px;
+      padding: 24px 0;
+
+      .locale {
+        grid-column: 1/7;
+        padding: 32px 40px;
+        display: grid;
+        grid-auto-rows: min-content;
+        row-gap: 21px;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 10px 0 #e7ecf0;
+
+        .field {
+          display: grid;
+          row-gap: 13px;
+
+          .label {
+            font-size: 12px;
+            color: #849096;
+          }
+
+          .value {
+            font-size: 12px;
+            color: #617079;
+          }
+        }
+      }
+
+      .users {
+        grid-column: 7/19;
+        padding: 76px 32px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 16px;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 10px 0 #e7ecf0;
+
+        .image {
+          width: 56px;
+          height: 56px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #2cc3d5;
+          border-radius: 50%;
+        }
+
+        .text {
+          display: grid;
+          row-gap: 6px;
+
+          .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #324650;
+          }
+
+          .label {
+            font-size: 14px;
+            color: #4b5d66;
+          }
+        }
+      }
+
+      .receivedMessages {
+        grid-column: 1/11;
+        padding: 80px 32px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 16px;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 10px 0 #e7ecf0;
+
+        .image {
+          width: 56px;
+          height: 56px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #4dcb7b;
+          border-radius: 50%;
+        }
+
+        .text {
+          display: grid;
+          row-gap: 6px;
+
+          .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #324650;
+          }
+
+          .label {
+            font-size: 14px;
+            color: #4b5d66;
+          }
+        }
+      }
+
+      .sentMessages {
+        grid-column: 11/19;
+        padding: 80px 32px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 16px;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0 10px 0 #e7ecf0;
+
+        .image {
+          width: 56px;
+          height: 56px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #517bf2;
+          border-radius: 50%;
+        }
+
+        .text {
+          display: grid;
+          row-gap: 6px;
+
+          .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #324650;
+          }
+
+          .label {
+            font-size: 14px;
+            color: #4b5d66;
+          }
+        }
+      }
+    }
+
+    .accountData {
+      padding: 62px 0 0;
+      display: grid;
+      grid-auto-rows: min-content;
+      justify-items: center;
+
+      .image {
+        width: 250px;
+      }
+
+      .label {
+        margin: 20px 0 0;
+        color: #8fa2b5;
+      }
+
+      .value {
+        margin: 10px 0 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: #434f5e;
+      }
+
+      .button {
+        margin: 26px 0 0;
+        padding: 12px 20px;
+        color: #fff;
+        background-color: #2cc3d5;
+        border: none;
+        border-radius: 6px;
+        cursor: not-allowed;
+      }
     }
   }
 }
