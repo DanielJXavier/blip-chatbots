@@ -1,0 +1,19 @@
+.footer {
+  position: relative;
+  padding: 22px 0 56px;
+
+  > hr {
+    position: absolute;
+    top: 0;
+    right: 60px;
+    left: 60px;
+    width: auto;
+  }
+
+  .text {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: #8b97a5;
+  }
+}
