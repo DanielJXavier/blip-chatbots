@@ -7,6 +7,7 @@ import { MyChatbotsContext } from 'contexts/myChatbots';
 import myChatbots from 'data/myChatbots';
 
 import Header from 'core/Header';
+import Footer from 'core/Footer';
 
 import MyChatbots from 'pages/MyChatbots';
 import ChatbotDetails from 'pages/ChatbotDetails';
@@ -25,6 +26,7 @@ const App: FC = () => (
           </Route>
           <Redirect to="/my-chatbots" />
         </Switch>
+        <Footer />
       </Router>
     </main>
   </MyChatbotsContext.Provider>
