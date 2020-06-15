@@ -3,10 +3,11 @@
 
 **[TAKE] Desafio: Lista de contatos inteligentes**
 
+![CI](https://github.com/DanielJXavier/blip-chatbots/workflows/CI/badge.svg?branch=master)
+
 ### First steps
     cd blip-chatbots
     yarn
-
 
 ### How to run in development mode
     yarn start
