@@ -8,7 +8,7 @@
   "repository": "github:DanielJXavier/blip-chatbots",
   "scripts": {
     "start": "react-scripts start",
-    "lint": "eslint src/**",
+    "lint": "eslint src/**/*.{ts,tsx}",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "coverage": "react-scripts test --coverage"
