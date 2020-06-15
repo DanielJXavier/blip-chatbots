@@ -8,12 +8,26 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: install
       run: yarn
   build:
     runs-on: ubuntu-latest
+    needs: install
     steps:
     - uses: actions/checkout@v2
     - name: build
       run: yarn build
+  lint:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+    - uses: actions/checkout@v2
+    - name: lint
+      run: yarn lint
+  coverage:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+    - uses: actions/checkout@v2
+    - name: coverage
+      run: yarn coverage
