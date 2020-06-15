@@ -1,12 +1,13 @@
 
 # blip-chatbots
 
-**[TAKE] Desafio: Lista de contatos inteligentes**
+![CI](https://github.com/DanielJXavier/blip-chatbots/workflows/CI/badge.svg?branch=master)
+![react](https://img.shields.io/github/package-json/dependency-version/DanielJXavier/blip-chatbots/react)
+![typescript](https://img.shields.io/github/package-json/dependency-version/DanielJXavier/blip-chatbots/dev/typescript)
 
 ### First steps
     cd blip-chatbots
     yarn
-
 
 ### How to run in development mode
     yarn start
