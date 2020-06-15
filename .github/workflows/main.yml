@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: build
+      uses: actions/checkout@v2
       run: |
         yarn
         yarn build
@@ -16,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: lint
+      uses: actions/checkout@v2
       run: |
         yarn
         yarn lint
@@ -23,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: coverage
+      uses: actions/checkout@v2
       run: |
         yarn
         yarn coverage
